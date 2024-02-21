@@ -80,7 +80,7 @@ def validate_user_data_view(request: HttpRequest) -> HttpResponse:
         return HttpResponse({"error": "Bad Request"}, status=400)
    
     if check_json(json_data):
-        return HttpResponse({"is_valid": True}, status=200)
+        return HttpResponse({"is_valid": 'true'}, status=200)
     else:
-        return HttpResponse({"is_valid": False}, status=200)
+        return HttpResponse({"is_valid": 'false'}, status=200)
 
