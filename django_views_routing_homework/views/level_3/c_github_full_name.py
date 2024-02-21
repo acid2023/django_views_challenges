@@ -19,6 +19,6 @@ def fetch_name_from_github_view(request: HttpRequest, github_username: str) -> H
     if response.status_code == 404:
         return HttpResponse(status=404)
     else:
-        name = response.json()['name']
+        name = response.json().get('name', None)
     return HttpResponse(name)
 
