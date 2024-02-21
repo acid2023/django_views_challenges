@@ -25,7 +25,7 @@ data = {
     "email": "value2@value2.com",
     "registered_from": "mobile_app",
     "age": '5',
-    "somethin" : '5'
+   # "somethin" : '5'
 }
 
 # Convert the JSON object to a string
@@ -38,8 +38,9 @@ response = requests.post(url, json=data)
 
 # Check the status code
 if response.status_code == 200:
-    print(response)
+    print(response.json())
+
 
 else:
     # If the status code is not 200, print the error message
-    print(f"Request failed with status code {response.status_code}: {response.content}")
+    print(f"Request failed with status code {response.json()}: {response.content}")

@@ -18,7 +18,7 @@
 Когда будете писать код, не забывайте о читаемости, поддерживаемости и модульности.
 """
 
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, JsonResponse
 import json
 import re
 
@@ -77,10 +77,10 @@ def validate_user_data_view(request: HttpRequest) -> HttpResponse:
     json_check, json_data = get_json_data(request)
     
     if not json_check:
-        return HttpResponse({"error": "Bad Request"}, status=400)
+       return JsonResponse({"error": "Bad Request"}, status=400)
    
     if check_json(json_data):
-        return HttpResponse({"is_valid": 'true'}, status=200)
+        return JsonResponse({"is_valid": True}, status=200)
     else:
-        return HttpResponse({"is_valid": 'false'}, status=200)
+        return JsonResponse({"is_valid": False}, status=200)
 
