@@ -49,7 +49,6 @@ def check_age_format(age: str) -> bool:
 def check_headers(json_date: dict[str, str]) -> bool:
     valid_headers = ['full_name', 'email', 'registered_from']
     actual_headers = list(json_date.keys())
-    print(actual_headers)
 
     for header in valid_headers:
         if header not in actual_headers:
