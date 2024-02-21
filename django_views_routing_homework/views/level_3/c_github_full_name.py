@@ -10,7 +10,15 @@
 """
 
 from django.http import HttpResponse, HttpRequest
+import requests
 
 
 def fetch_name_from_github_view(request: HttpRequest, github_username: str) -> HttpResponse:
-    pass  # код писать тут
+    url = 'https://api.github.com/users/' + github_username
+    response = requests.get(url)
+    if response.status_code == 404:
+        return HttpResponse(status=404)
+    else:
+        name = response.json().get('name', None)
+    return HttpResponse(name)
+

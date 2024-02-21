@@ -15,7 +15,16 @@
 """
 
 from django.http import HttpResponse, HttpRequest
-
+import lorem
 
 def generate_file_with_text_view(request: HttpRequest) -> HttpResponse:
-    pass  # код писать тут
+    length = int(request.GET.get('length', False))
+    if not length or length > 1000:
+        return HttpResponse(status=403)
+    text = lorem.text()[:length]
+    response = HttpResponse(
+        text,
+        content_type='text/plain',
+        headers={'Content-Disposition': 'attachment; filename="lorem.txt"'},)
+    return response
+
