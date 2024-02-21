@@ -28,7 +28,7 @@ urlpatterns = [
     path('user/validate/', validate_user_data_view),
     path('user/github/<slug:github_username>/full-name/', fetch_name_from_github_view),
     path('text/generate/', generate_file_with_text_view),
-    path('be/', bye_user_view),
+    path('bye/', bye_user_view),
     path('user-info/<int:user_id>/', get_user_info_view),
     path('month-title/<int:month_number>/', get_month_title_view),
     path('greet/<str:name>/<str:language>/', greet_user_in_different_languages_view),
